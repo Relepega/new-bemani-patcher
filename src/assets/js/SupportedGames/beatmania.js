@@ -1321,14 +1321,27 @@ const bm2dx = [
 								},
 							],
 						},
+
 						{
-							name: 'Quick Retry',
-							patches: [{ offset: 0x40e36f, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
+							name: 'pfree unlock p2',
+							patches: [
+								{
+									offset: 0x65bf15,
+									off: [0x74, 0x55],
+									on: [0x90, 0x90],
+								},
+								{ offset: 0x65bf2b, off: [0x74, 0x3f], on: [0x90, 0x90] },
+							],
 						},
 						{
-							name: 'CS-Style Song Start Delay',
-							tooltip: 'Holding Start will pause the song at the beginning until you release it',
-							patches: [{ offset: 0x68d453, off: [0x7d, 0x4d], on: [0x90, 0x90] }],
+							name: 'pfree unlock',
+							patches: [
+								{
+									offset: 0x65bd64,
+									off: [0x75],
+									on: [0xeb],
+								},
+							],
 						},
 						{
 							name: 'Bypass lightning monitor error',
@@ -1374,17 +1387,6 @@ const bm2dx = [
 						{
 							name: 'WASAPI Shared Mode (with 44100Hz)',
 							patches: [{ offset: 0x20a541, off: [0x01], on: [0x00] }],
-						},
-						{
-							name: 'Premium Free (1 Player Mode)',
-							patches: [{ offset: 0x65bd64, off: [0x75], on: [0xeb] }],
-						},
-						{
-							name: 'Premium Free (2 Player Mode)',
-							patches: [
-								{ offset: 0x65bf15, off: [0x74, 0x55], on: [0x90, 0x90] },
-								{ offset: 0x65bf2b, off: [0x74, 0x3f], on: [0x90, 0x90] },
-							],
 						},
 						{
 							name: 'Premium Free Timer Freeze',
