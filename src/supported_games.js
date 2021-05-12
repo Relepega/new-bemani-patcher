@@ -2254,7 +2254,7 @@ const supportedGames = [
 	{
 		id: 'bistrover', // game id
 		name: 'beatmania IIDX 28 BISTROVER', // game name
-		image: 'bistrover.jpg', // game icon
+		image: 'bistrover.png', // game icon
 		patchers: [
 			// array of PatchContainers
 			[
