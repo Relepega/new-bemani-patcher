@@ -1,6 +1,8 @@
 # New Bemani Patcher
 
-a reworked version of [mon](https://github.com/mon)'s BemaniPatcher written in vuejs and with a new api
+a reworked version of [mon](https://github.com/mon)'s [BemaniPatcher](https://github.com/mon/BemaniPatcher) written in vuejs and with a new api
+
+NB: this project is not affiliated with mon's
 
 ## Project setup
 
