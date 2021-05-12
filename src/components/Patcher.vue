@@ -4,8 +4,6 @@
 
 <script>
 	/*eslint-disable-next-line*/
-
-	/*eslint-disable-next-line*/
 	import { StandardPatch, UnionPatch, PatchContainer, Patcher } from '@/assets/js/dllpatcher.js'
 
 	export default {
@@ -15,7 +13,6 @@
 			gamename: String,
 		},
 		mounted() {
-			// document.querySelector('#patcher-ui').innerHTML += ', suca'
 			let patchContainers = this.patchContainers
 
 			for (let i = 0; i < patchContainers.length; i++) {
