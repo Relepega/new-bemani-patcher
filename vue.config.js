@@ -5,4 +5,7 @@
  */
 module.exports = {
 	publicPath: process.env.NODE_ENV === 'production' ? '/BemaniPatcher' : '/',
+	chainWebpack: (config) => {
+		config.resolve.symlinks(false)
+	},
 }
