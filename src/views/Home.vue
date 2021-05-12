@@ -25,7 +25,7 @@
 <script>
 	// @ is an alias to /src
 	import GameCard from '@/components/GameCard.vue'
-	import supportedGames from '@/supported_games.js'
+	import supportedGames from '@/assets/js/supported_games.js'
 
 	import { ref } from 'vue'
 

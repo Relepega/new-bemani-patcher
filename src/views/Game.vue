@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import supportedGames from '@/supported_games.js'
+	import supportedGames from '@/assets/js/supported_games.js'
 	import Patcher from '@/components/Patcher.vue'
 
 	export default {
