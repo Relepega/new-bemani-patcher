@@ -656,7 +656,7 @@ const chuni = [
 			[
 				{
 					appname: 'chuniApp.exe',
-					version: '',
+					version: '(1.40.00) CRYSTAL',
 					patches: [
 						{
 							name: 'Allow 127.0.0.1/localhost as the network server',
@@ -711,6 +711,64 @@ const chuni = [
 							name: 'Free Play',
 							tooltip: 'Endless credits',
 							patches: [{ offset: 0xc208d5, off: [0x28], on: [0x08] }],
+						},
+						{
+							// ikaros14
+							name: 'Dummy LED',
+							tooltip: 'Skip LED board check',
+							patches: [{ offset: 0x2499d7, off: [0x00], on: [0x01] }],
+						},
+					],
+				},
+				{
+					appname: 'chuniApp.exe',
+					version: '(1.45.00) CRYSTAL PLUS',
+					patches: [
+						{
+							name: 'Allow 127.0.0.1/localhost as the network server',
+							patches: [
+								{ offset: 0x997380, off: [0x55, 0x8b, 0xec], on: [0x31, 0xc0, 0xc3] },
+								{ offset: 0x1717080, off: [0x31, 0x32, 0x37, 0x2f], on: [0x30, 0x2f, 0x38, 0x00] },
+							],
+						},
+						{
+							name: 'Disable shop close lockout',
+							tooltip: 'Disables ~12-8am lockout. Does not disable maint lockout from 6:30-7am JST',
+							patches: [{ offset: 0x9bead3, off: [0x74], on: [0xeb] }],
+						},
+						{
+							name: 'Force shared audio mode, system audio samplerate must be 48000',
+							tooltip: 'Improves compatibility but may increase latency',
+							patches: [{ offset: 0xcf1aba, off: [0x01], on: [0x00] }],
+						},
+						{
+							name: 'Force 2 channel audio output',
+							patches: [{ offset: 0xcf1b91, off: [0x75, 0x3f], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Disable Song Select Timer',
+							tooltip: 'May only work when playing with card.',
+							patches: [{ offset: 0x765dc2, off: [0x74], on: [0xeb] }],
+						},
+						{
+							name: 'Set All Timers to 999',
+							patches: [{ offset: 0x613c70, off: [0x8b, 0x44, 0x24, 0x04, 0x69, 0xc0, 0xe8, 0x03, 0x00, 0x00], on: [0xb8, 0x58, 0x3e, 0x0f, 0x00, 0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Better patch for head-to-head play',
+							tooltip: 'Fix infinite sync while trying to connect to head to head play.',
+							patches: [{ offset: 0x478e03, off: [0x01], on: [0x00] }],
+						},
+						{
+							// ikaros14
+							name: 'Increase max credits to 254',
+							patches: [{ offset: 0xc93b67, off: [0x8a, 0x5d, 0x14], on: [0xb3, 0xfe, 0x90] }],
+						},
+						{
+							// ikaros14
+							name: 'Free Play',
+							tooltip: 'Endless credits',
+							patches: [{ offset: 0xc93f85, off: [0x28], on: [0x08] }],
 						},
 						{
 							// ikaros14

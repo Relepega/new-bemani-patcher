@@ -1282,6 +1282,14 @@ const bm2dx = [
 					version: '2021-04-26', // app version
 					patches: [
 						{
+							name: 'SSE4.2 Fix',
+							patches: [{ offset: 0x20a454, off: [0xf3, 0x45, 0x0f], on: [0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Skip Camera Error',
+							patches: [{ offset: 0x6b231b, off: [0x84], on: [0x81] }],
+						},
+						{
 							name: 'Force 120hz timing and adapter mode in LDJ (Experimental)',
 							patches: [
 								{ offset: 0x3c6063, off: [0x75], on: [0xeb] },
@@ -1300,6 +1308,10 @@ const bm2dx = [
 								{ offset: 0x78bfe4, off: [0x0f, 0x84], on: [0x90, 0xe9] },
 								{ offset: 0x78c750, off: [0x9c, 0xe4], on: [0x3c, 0xdd] },
 							],
+						},
+						{
+							name: 'Bypass lightning monitor error',
+							patches: [{ offset: 0x6a4d91, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
 						},
 						{
 							name: 'Force LDJ software video decoder for all boot modes',
@@ -1321,9 +1333,18 @@ const bm2dx = [
 								},
 							],
 						},
-
 						{
-							name: 'pfree unlock p2',
+							name: '1P Premium Free',
+							patches: [
+								{
+									offset: 0x65bd64,
+									off: [0x75],
+									on: [0xeb],
+								},
+							],
+						},
+						{
+							name: '2P Premium Free',
 							patches: [
 								{
 									offset: 0x65bf15,
@@ -1334,18 +1355,9 @@ const bm2dx = [
 							],
 						},
 						{
-							name: 'pfree unlock',
-							patches: [
-								{
-									offset: 0x65bd64,
-									off: [0x75],
-									on: [0xeb],
-								},
-							],
-						},
-						{
-							name: 'Bypass lightning monitor error',
-							patches: [{ offset: 0x6a4d91, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
+							name: 'Premium Free Timer Freeze',
+							tooltip: 'Freezes the timer in PREMIUM FREE mode, allowing unlimited play until exit',
+							patches: [{ offset: 0x42e5dd, off: [0x7e], on: [0xeb] }],
 						},
 						{
 							name: 'Unlock All Songs',
@@ -1372,14 +1384,24 @@ const bm2dx = [
 							],
 						},
 						{
-							name: 'Skip Camera Error',
-							patches: [{ offset: 0x6b2318, off: [0x84], on: [0x81] }],
+							name: 'CS-style song start delay',
+							tooltip: 'Holding Start will pause the song at the beginning until you release it',
+							patches: [
+								{
+									offset: 0x68d453,
+									off: [0x7d, 0x4d],
+									on: [0x90, 0x90],
+								},
+							],
 						},
 						{
 							name: 'Cursor Lock',
 							patches: [{ offset: 0x662ecf, off: [0x74, 0x1f], on: [0x90, 0x90] }],
 						},
-
+						{
+							name: 'Quick Retry',
+							patches: [{ offset: 0x40e36f, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
+						},
 						{
 							name: 'Standard/Menu Timer Freeze',
 							patches: [{ offset: 0x6d6b77, off: [0x74], on: [0xeb] }],
@@ -1389,9 +1411,11 @@ const bm2dx = [
 							patches: [{ offset: 0x20a541, off: [0x01], on: [0x00] }],
 						},
 						{
-							name: 'Premium Free Timer Freeze',
-							tooltip: 'Freezes the timer in PREMIUM FREE mode, allowing unlimited play until exit',
-							patches: [{ offset: 0x42e5dd, off: [0x7e], on: [0xeb] }],
+							name: 'Always show FAST/SLOW total',
+							patches: [
+								{ offset: 0x678863, off: [0x74], on: [0x75] },
+								{ offset: 0x678a80, off: [0x74], on: [0x75] },
+							],
 						},
 						{
 							name: 'Hide all bottom text',
