@@ -1553,20 +1553,20 @@ const sdvx = [
 			],
 		],
 	},
-	{
-		id: '',
-		name: '',
-		image: '',
-		patchers: [
-			[
-				{
-					appname: '',
-					version: '',
-					patches: [],
-				},
-			],
-		],
-	},
+	// {
+	// 	id: '',
+	// 	name: '',
+	// 	image: '',
+	// 	patchers: [
+	// 		[
+	// 			{
+	// 				appname: '',
+	// 				version: '',
+	// 				patches: [],
+	// 			},
+	// 		],
+	// 	],
+	// },
 ]
 
 export default sdvx
