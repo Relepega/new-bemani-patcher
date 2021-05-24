@@ -1516,6 +1516,57 @@ const sdvx = [
 			],
 		],
 	},
+	{
+		id: 'sdvx6', // game id
+		name: 'SDVX VI EXCEED GEAR', // game name
+		image: 'sdvx6.png', // game icon
+		patchers: [
+			// array of PatchContainers
+			[
+				// array for PatchContainer
+				{
+					// object containing Patcher data
+					appname: 'soundvoltex.dll', // app entryfile
+					version: '2021-04-28', // app version
+					patches: [
+						{
+							name: 'Disable power change', //patch by Xyen
+							tooltip: 'Prevents power mode change on startup',
+							patches: [{ offset: 0x1ec553, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Disable monitor change', //patch by Xyen
+							tooltip: 'Prevents monitor setting changes on startup',
+							patches: [{ offset: 0x1ec5eb, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Shared mode WASAPI',
+							tooltip: "Only replaces the first audio device init attempt. Set output to 44100Hz 16bit if it doesn't work.",
+							patches: [{ offset: 0x42b089, off: [0x04], on: [0x00] }],
+						},
+						{
+							name: 'Timer freeze', // ikaros14
+							patches: [{ offset: 0x71166, off: [0x84], on: [0x85] }],
+						},
+					], // patches available in the Patcher
+				},
+			],
+		],
+	},
+	{
+		id: '',
+		name: '',
+		image: '',
+		patchers: [
+			[
+				{
+					appname: '',
+					version: '',
+					patches: [],
+				},
+			],
+		],
+	},
 ]
 
 export default sdvx
