@@ -1548,6 +1548,29 @@ const sdvx = [
 							name: 'Timer freeze', // ikaros14
 							patches: [{ offset: 0x71166, off: [0x84], on: [0x85] }],
 						},
+						{
+							type: 'union',
+							name: 'Premium Time Length',
+							offset: 0x297996,
+							patches: [
+								{
+									name: 'Default (10 Minutes)',
+									patch: [0x00, 0x70, 0xc9, 0xb2, 0x8b, 0x00, 0x00, 0x00],
+								},
+								{
+									name: '20 Minutes',
+									patch: [0x00, 0xe0, 0x92, 0x65, 0x17, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '30 Minutes',
+									patch: [0x00, 0x50, 0x5c, 0x18, 0xa3, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '1 Hour',
+									patch: [0x00, 0xa0, 0xb8, 0x30, 0x46, 0x03, 0x00, 0x00],
+								},
+							],
+						},
 					], // patches available in the Patcher
 				},
 			],
