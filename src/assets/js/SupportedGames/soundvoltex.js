@@ -1594,6 +1594,14 @@ const sdvx = [
 							patches: [{ offset: 0x42d009, off: [0x04], on: [0x00] }],
 						},
 						{
+							name: 'EXPERIMENTAL: Including non-E004 cards',
+							// tooltip: "Only replaces the first audio device init attempt. Set output to 44100Hz 16bit if it doesn't work.",
+							patches: [
+								{ offset: 0xa4b, off: [0x75, 0x12], on: [0x90, 0x90] },
+								{ offset: 0xa53, off: [0x74], on: [0xeb] },
+							],
+						},
+						{
 							name: 'Timer freeze', // Jun
 							patches: [{ offset: 0x713d6, off: [0x84], on: [0x85] }],
 						},
