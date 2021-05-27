@@ -1549,6 +1549,14 @@ const sdvx = [
 							patches: [{ offset: 0x71166, off: [0x84], on: [0x85] }],
 						},
 						{
+							name: 'Allow non E004 cards',
+							tooltip: 'Allows cards that do not have E004 card IDs (such as mifare cards) to work.',
+							patches: [
+								{ offset: 0xa4b, off: [0x75, 0x12], on: [0x90, 0x90] },
+								{ offset: 0xa53, off: [0x74], on: [0xeb] },
+							],
+						},
+						{
 							type: 'union',
 							name: 'Premium Time Length',
 							offset: 0x297996,
@@ -1579,12 +1587,12 @@ const sdvx = [
 					version: '2021-05-18', // app version
 					patches: [
 						{
-							name: 'Disable power change', //patch by Jun
+							name: 'Disable power change', //patch by Xyen
 							tooltip: 'Prevents power mode change on startup',
 							patches: [{ offset: 0x1ecd13, off: [0x75], on: [0xeb] }],
 						},
 						{
-							name: 'Disable monitor change', //patch by Jun
+							name: 'Disable monitor change', //patch by Xyen
 							tooltip: 'Prevents monitor setting changes on startup',
 							patches: [{ offset: 0x1ecdab, off: [0x75], on: [0xeb] }],
 						},
@@ -1594,16 +1602,16 @@ const sdvx = [
 							patches: [{ offset: 0x42d009, off: [0x04], on: [0x00] }],
 						},
 						{
+							name: 'Timer freeze', // ikaros14
+							patches: [{ offset: 0x713d6, off: [0x84], on: [0x85] }],
+						},
+						{
 							name: 'EXPERIMENTAL: Including non-E004 cards',
 							// tooltip: "Only replaces the first audio device init attempt. Set output to 44100Hz 16bit if it doesn't work.",
 							patches: [
 								{ offset: 0xa4b, off: [0x75, 0x12], on: [0x90, 0x90] },
 								{ offset: 0xa53, off: [0x74], on: [0xeb] },
 							],
-						},
-						{
-							name: 'Timer freeze', // Jun
-							patches: [{ offset: 0x713d6, off: [0x84], on: [0x85] }],
 						},
 						{
 							type: 'union',
