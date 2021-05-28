@@ -1614,6 +1614,10 @@ const sdvx = [
 							],
 						},
 						{
+							name: 'EXPERIMENTAL: Valkyrie mode',
+							patches: [{ offset: 0x3f1bd5, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+						},
+						{
 							type: 'union',
 							name: 'Premium Time Length',
 							offset: 0x298d16,
