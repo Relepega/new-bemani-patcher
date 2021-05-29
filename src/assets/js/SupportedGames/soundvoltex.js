@@ -1613,9 +1613,18 @@ const sdvx = [
 								{ offset: 0xa53, off: [0x74], on: [0xeb] },
 							],
 						},
+						// {
+						// 	name: 'EXPERIMENTAL: Valkyrie mode',
+						// 	patches: [{ offset: 0x3f1bd5, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+						// },
 						{
-							name: 'EXPERIMENTAL: Valkyrie mode',
+							name: 'Valkryie Model Support',
+							tooltip: 'Will only work with <spec __type="str">F</spec> changed to either G or H, in ea3-config.xml.',
 							patches: [{ offset: 0x3f1bd5, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+						},
+						{
+							name: '120Hz Support',
+							patches: [{ offset: 0x6fc0be, off: [0x4e], on: [0x5e] }],
 						},
 						{
 							type: 'union',
