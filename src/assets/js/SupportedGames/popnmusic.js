@@ -906,6 +906,64 @@ const popn = [
 			],
 		],
 	},
+	{
+		id: 'popn26kaimei', // game id
+		name: "Pop'n Music 26 解明リドルズ", // game name
+		image: 'kaimeiriddles.png', // game icon
+		patchers: [
+			// array of PatchContainers
+			[
+				// array for PatchContainer
+				{
+					// object containing Patcher data
+					appname: 'popn22.dll', // app entryfile
+					version: '2021-04-26', // app version
+					patches: [
+						{
+							name: 'Unlock all songs',
+							pathces: [
+								{ offset: 0x111192, off: [0x74], on: [0xeb] },
+								{ offset: 0x1111ab, off: [0x74], on: [0xeb] },
+								{ offset: 0x1111c8, off: [0x75], on: [0xeb] },
+								{ offset: 0x1111f5, off: [0x84, 0xc0], on: [0xb0, 0x01] },
+							],
+						},
+						{
+							name: 'Tutorial skip',
+							pathces: [
+								{ offset: 0x0289cb, off: [0x74], on: [0xeb] },
+								{ offset: 0x0289a7, off: [0x75], on: [0xeb] },
+								{ offset: 0x08dc61, off: [0x75], on: [0xeb] },
+							],
+						},
+						{
+							name: 'Timer freeze',
+							pathces: [{ offset: 0x0e543c, off: [0x90], on: [0xe9] }],
+						},
+						// {
+						// 	name: '',
+						// 	pathces: [],
+						// },
+					], // patches available in the Patcher
+				},
+			],
+			[], // array for PatchContainer							// and so on...
+		],
+	},
+	// {
+	// 	id: '',
+	// 	name: '',
+	// 	image: '',
+	// 	patchers: [
+	// 		[
+	// 			{
+	// 				appname: '',
+	// 				version: '',
+	// 				patches: [],
+	// 			},
+	// 		],
+	// 	],
+	// },
 ]
 
 export default popn
