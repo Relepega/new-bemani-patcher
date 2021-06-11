@@ -947,7 +947,6 @@ const popn = [
 					], // patches available in the Patcher
 				},
 			],
-			[], // array for PatchContainer							// and so on...
 		],
 	},
 	// {
