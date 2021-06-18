@@ -1651,6 +1651,64 @@ const sdvx = [
 						},
 					], // patches available in the Patcher
 				},
+				{
+					// object containing Patcher data
+					appname: 'soundvoltex.dll', // app entryfile
+					version: '2021-06-16', // app version
+					patches: [
+						{
+							name: 'Disable power change',
+							tooltip: 'Prevents power mode change on startup',
+							patches: [{ offset: 0x1ecec3, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Disable monitor change',
+							tooltip: 'Prevents monitor setting changes on startup',
+							patches: [{ offset: 0x1ecf5b, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Valkryie Model Support',
+							tooltip: 'Will only work with <spec __type="str">F</spec> changed to either G or H, in ea3-config.xml.',
+							patches: [{ offset: 0x3f37c5, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+						},
+						{
+							name: '120Hz Support',
+							patches: [{ offset: 0x70085e, off: [0x4e], on: [0x5e] }],
+						},
+						{
+							name: 'Shared mode WASAPI',
+							tooltip: "Only replaces the first audio device init attempt. Set output to 44100Hz 16bit if it doesn't work.",
+							patches: [{ offset: 0x42ec39, off: [0x04], on: [0x00] }],
+						},
+						{
+							name: 'Timer freeze',
+							patches: [{ offset: 0x71406, off: [0x84], on: [0x85] }],
+						},
+						{
+							type: 'union',
+							name: 'Premium Time Length',
+							offset: 0x29a116,
+							patches: [
+								{
+									name: 'Default (10 Minutes)',
+									patch: [0x00, 0x70, 0xc9, 0xb2, 0x8b, 0x00, 0x00, 0x00],
+								},
+								{
+									name: '20 Minutes',
+									patch: [0x00, 0xe0, 0x92, 0x65, 0x17, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '30 Minutes',
+									patch: [0x00, 0x50, 0x5c, 0x18, 0xa3, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '1 Hour',
+									patch: [0x00, 0xa0, 0xb8, 0x30, 0x46, 0x03, 0x00, 0x00],
+								},
+							],
+						},
+					],
+				},
 			],
 		],
 	},
