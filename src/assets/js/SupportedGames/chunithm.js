@@ -776,6 +776,14 @@ const chuni = [
 							tooltip: 'Skip LED board check',
 							patches: [{ offset: 0x2499d7, off: [0x00], on: [0x01] }],
 						},
+						{
+							name: 'No Title Server Encryption',
+							patches: [{ offset: 0x3d4372, off: [0x39], on: [0xc3] }],
+						},
+						{
+							name: 'No Title Server TLS',
+							patches: [{ offset: 0xce5479, off: [0x81, 0xe3, 0x00, 0x00, 0x80, 0x00], on: [0x31, 0xdb, 0x90, 0x90, 0x90, 0x90] }],
+						},
 					],
 				},
 			],
