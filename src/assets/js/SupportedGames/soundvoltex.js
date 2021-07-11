@@ -1709,12 +1709,6 @@ const sdvx = [
 						},
 					],
 				},
-				{
-					// object containing Patcher data
-					appname: 'soundvoltex.dll', // app entryfile
-					version: '2021-06-16', // app version
-					patches: [],
-				},
 			],
 		],
 	},
