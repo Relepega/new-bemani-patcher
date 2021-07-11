@@ -920,25 +920,43 @@ const popn = [
 					version: '2021-04-26', // app version
 					patches: [
 						{
-							name: 'Unlock all songs',
-							pathces: [
+							name: 'E: Drive Fix',
+							tooltip: 'Fix crash caused by no E: drive',
+							patches: [{ offset: 0x28e910, off: [0x65, 0x3a, 0x2f], on: [0x64, 0x65, 0x76] }],
+						},
+						{
+							name: 'HDMI Audio Fix',
+							patches: [{ offset: 0x13895c, off: [0x85, 0xc0, 0x75, 0x96], on: [0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Prevent Windows volume change on boot',
+							tooltip: 'If your volume gets forced to max, turn this on',
+							patches: [{ offset: 0x13b560, off: [0x83], on: [0xc3] }],
+						},
+						{
+							name: 'Boot to Event Mode',
+							patches: [{ offset: 0x10cc50, off: [0x8b, 0x00, 0xc3, 0xcc], on: [0x31, 0xc0, 0x40, 0xc3] }],
+						},
+						{
+							name: 'Remove Timer',
+							patches: [{ offset: 0xe543c, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
+						},
+						{
+							name: 'Skip Menu and Long Note Tutorials',
+							patches: [
+								{ offset: 0x289cb, off: [0x74], on: [0xeb] },
+								{ offset: 0x289a7, off: [0x75], on: [0xeb] },
+								{ offset: 0x8dc61, off: [0x75], on: [0xeb] },
+							],
+						},
+						{
+							name: 'Unlock All Songs',
+							patches: [
 								{ offset: 0x111192, off: [0x74], on: [0xeb] },
 								{ offset: 0x1111ab, off: [0x74], on: [0xeb] },
 								{ offset: 0x1111c8, off: [0x75], on: [0xeb] },
 								{ offset: 0x1111f5, off: [0x84, 0xc0], on: [0xb0, 0x01] },
 							],
-						},
-						{
-							name: 'Tutorial skip',
-							pathces: [
-								{ offset: 0x0289cb, off: [0x74], on: [0xeb] },
-								{ offset: 0x0289a7, off: [0x75], on: [0xeb] },
-								{ offset: 0x08dc61, off: [0x75], on: [0xeb] },
-							],
-						},
-						{
-							name: 'Timer freeze',
-							pathces: [{ offset: 0x0e543c, off: [0x90], on: [0xe9] }],
 						},
 						// {
 						// 	name: '',
