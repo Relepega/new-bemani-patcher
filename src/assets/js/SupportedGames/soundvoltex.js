@@ -1657,23 +1657,23 @@ const sdvx = [
 					version: '2021-06-16', // app version
 					patches: [
 						{
-							name: 'Disable power change',
+							name: 'Disable power change', //patch by Xyen
 							tooltip: 'Prevents power mode change on startup',
 							patches: [{ offset: 0x1ecec3, off: [0x75], on: [0xeb] }],
 						},
 						{
-							name: 'Disable monitor change',
+							name: 'Disable monitor change', //patch by Xyen
 							tooltip: 'Prevents monitor setting changes on startup',
 							patches: [{ offset: 0x1ecf5b, off: [0x75], on: [0xeb] }],
 						},
 						{
-							name: 'Valkryie Model Support',
+							name: 'Force BIO2 (KFC) IO in Valkyrie mode',
 							tooltip: 'Will only work with <spec __type="str">F</spec> changed to either G or H, in ea3-config.xml.',
-							patches: [{ offset: 0x3f37c5, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+							patches: [{ offset: 0x3f1bd5, off: [0x87, 0x05], on: [0x47, 0x0c] }],
 						},
 						{
 							name: '120Hz Support',
-							patches: [{ offset: 0x70085e, off: [0x4e], on: [0x5e] }],
+							patches: [{ offset: 0x6fc0be, off: [0x4e], on: [0x5e] }],
 						},
 						{
 							name: 'Shared mode WASAPI',
@@ -1681,7 +1681,7 @@ const sdvx = [
 							patches: [{ offset: 0x42ec39, off: [0x04], on: [0x00] }],
 						},
 						{
-							name: 'Timer freeze',
+							name: 'Timer freeze', // ikaros14
 							patches: [{ offset: 0x71406, off: [0x84], on: [0x85] }],
 						},
 						{
@@ -1708,6 +1708,12 @@ const sdvx = [
 							],
 						},
 					],
+				},
+				{
+					// object containing Patcher data
+					appname: 'soundvoltex.dll', // app entryfile
+					version: '2021-06-16', // app version
+					patches: [],
 				},
 			],
 		],
