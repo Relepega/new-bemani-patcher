@@ -1038,230 +1038,236 @@ const bm2dx = [
 		patchers: [
 			[
 				{
-					name: 'Disable TDJ check for exclusive songs',
-					patches: [
-						{ offset: 0x352ea9, off: [0x75, 0x19], on: [0x90, 0x90] },
-						{ offset: 0x352f19, off: [0x75, 0x15], on: [0x90, 0x90] },
-					],
-				},
-				{
-					name: 'Disable TDJ check for lightning category',
-					patches: [{ offset: 0x33718d, off: [0x75, 0x0a], on: [0x90, 0x90] }],
-				},
-				{
-					name: 'Force 120hz timing and adapter mode in LDJ (Experimental)',
-					patches: [
-						{ offset: 0x2fbba3, off: [0x75], on: [0xeb] },
-						{ offset: 0x621169, off: [0x74, 0x03], on: [0x90, 0x90] },
-						{ offset: 0x620f7e, off: [0x3c], on: [0x78] },
-					],
-				},
-				{
-					name: 'Force LDJ software video decoder for all boot modes',
-					patches: [{ offset: 0x5fbcc7, off: [0x83, 0x78, 0x08, 0x02], on: [0x83, 0x78, 0x08, 0x05] }],
-				},
-				{
-					name: 'Bypass lightning monitor error',
-					patches: [{ offset: 0x58c681, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
-				},
-				{
-					// mon
-					name: 'Force shared audio',
-					tooltip: "If it doesn't work, set your device to 44100Hz 16bit",
-					patches: [{ offset: 0x2678b1, off: [0x01], on: [0x00] }],
-				},
-				{
-					name: 'Skip decide screen',
-					tooltip: 'Immediately loads into chart after selection',
-					patches: [{ offset: 0x2d6160, off: [0xe8, 0x6b, 0x00, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'Cursor lock',
-					tooltip: 'After song finishes, song select remains on previous song',
-					patches: [{ offset: 0x551d98, off: [0x84, 0xc0], on: [0x90, 0x90] }],
-				},
-				{
-					name: 'Unlock All Songs',
-					patches: [{ offset: 0x353e90, off: [0x75, 0x24], on: [0x90, 0x90] }],
-				},
-				{
-					name: 'Unlock All 12s',
-					patches: [{ offset: 0x353cd0, off: [0x83, 0xff, 0x03, 0x74, 0x05, 0x83, 0xff, 0x08], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					// ikaros14
-					name: 'Quick Retry',
-					patches: [{ offset: 0x339bbf, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
-				},
-				{
-					name: 'Skip CAMERA DEVICE ERROR prompt',
-					tooltip: 'Prevents the CAMERA DEVICE ERROR message from popping up on boot',
-					patches: [{ offset: 0x59962b, off: [0x84], on: [0x81] }],
-				},
-				{
-					name: 'Premium Free (1 Player Mode)',
-					patches: [{ offset: 0x54b667, off: [0x75], on: [0xeb] }],
-				},
-				{
-					name: 'Premium Free (2 Player Mode)',
-					patches: [
-						{ offset: 0x54b805, off: [0x74, 0x55], on: [0x90, 0x90] },
-						{ offset: 0x54b81b, off: [0x74, 0x3f], on: [0x90, 0x90] },
-					],
-				},
-				{
-					name: 'Premium Free Timer Freeze',
-					tooltip: 'Freezes the timer in PREMIUM FREE mode, allowing unlimited play until exit',
-					patches: [{ offset: 0x356bbd, off: [0x7e], on: [0xeb] }],
-				},
-				{
-					name: 'Standard/Menu Timer Freeze',
-					tooltip: 'Freezes the timer in STANDARD and in-game menus such as song select',
-					patches: [{ offset: 0x5bdca7, off: [0x74], on: [0xeb] }],
-				},
-				{
-					name: 'Shim Lightning Mode IO (for spicetools)',
-					patches: [
-						{ offset: 0x5fbcce, off: [0x0f, 0x84, 0x8d, 0x00, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] },
-						{ offset: 0x63b0e4, off: [0x0f, 0x84], on: [0x90, 0xe9] },
-						{ offset: 0x63b850, off: [0x7c, 0xe5], on: [0x0c, 0xde] },
-					],
-				},
-				{
-					name: 'Hide "EXTRA PASELI: %d"',
+					appname: 'bm2dx.dll',
+					version: '2020-09-29',
 					patches: [
 						{
-							offset: 0x2bd1b1,
-							off: [0x7f, 0x12, 0x44, 0x8b, 0xcb, 0x4c, 0x8d, 0x05, 0xf3, 0xd8, 0x4e, 0x00],
-							on: [0x90, 0xe9, 0x22, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90],
+							name: 'Disable TDJ check for exclusive songs',
+							patches: [
+								{ offset: 0x352ea9, off: [0x75, 0x19], on: [0x90, 0x90] },
+								{ offset: 0x352f19, off: [0x75, 0x15], on: [0x90, 0x90] },
+							],
+						},
+						{
+							name: 'Disable TDJ check for lightning category',
+							patches: [{ offset: 0x33718d, off: [0x75, 0x0a], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Force 120hz timing and adapter mode in LDJ (Experimental)',
+							patches: [
+								{ offset: 0x2fbba3, off: [0x75], on: [0xeb] },
+								{ offset: 0x621169, off: [0x74, 0x03], on: [0x90, 0x90] },
+								{ offset: 0x620f7e, off: [0x3c], on: [0x78] },
+							],
+						},
+						{
+							name: 'Force LDJ software video decoder for all boot modes',
+							patches: [{ offset: 0x5fbcc7, off: [0x83, 0x78, 0x08, 0x02], on: [0x83, 0x78, 0x08, 0x05] }],
+						},
+						{
+							name: 'Bypass lightning monitor error',
+							patches: [{ offset: 0x58c681, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
+						},
+						{
+							// mon
+							name: 'Force shared audio',
+							tooltip: "If it doesn't work, set your device to 44100Hz 16bit",
+							patches: [{ offset: 0x2678b1, off: [0x01], on: [0x00] }],
+						},
+						{
+							name: 'Skip decide screen',
+							tooltip: 'Immediately loads into chart after selection',
+							patches: [{ offset: 0x2d6160, off: [0xe8, 0x6b, 0x00, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Cursor lock',
+							tooltip: 'After song finishes, song select remains on previous song',
+							patches: [{ offset: 0x551d98, off: [0x84, 0xc0], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Unlock All Songs',
+							patches: [{ offset: 0x353e90, off: [0x75, 0x24], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Unlock All 12s',
+							patches: [{ offset: 0x353cd0, off: [0x83, 0xff, 0x03, 0x74, 0x05, 0x83, 0xff, 0x08], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							// ikaros14
+							name: 'Quick Retry',
+							patches: [{ offset: 0x339bbf, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
+						},
+						{
+							name: 'Skip CAMERA DEVICE ERROR prompt',
+							tooltip: 'Prevents the CAMERA DEVICE ERROR message from popping up on boot',
+							patches: [{ offset: 0x59962b, off: [0x84], on: [0x81] }],
+						},
+						{
+							name: 'Premium Free (1 Player Mode)',
+							patches: [{ offset: 0x54b667, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Premium Free (2 Player Mode)',
+							patches: [
+								{ offset: 0x54b805, off: [0x74, 0x55], on: [0x90, 0x90] },
+								{ offset: 0x54b81b, off: [0x74, 0x3f], on: [0x90, 0x90] },
+							],
+						},
+						{
+							name: 'Premium Free Timer Freeze',
+							tooltip: 'Freezes the timer in PREMIUM FREE mode, allowing unlimited play until exit',
+							patches: [{ offset: 0x356bbd, off: [0x7e], on: [0xeb] }],
+						},
+						{
+							name: 'Standard/Menu Timer Freeze',
+							tooltip: 'Freezes the timer in STANDARD and in-game menus such as song select',
+							patches: [{ offset: 0x5bdca7, off: [0x74], on: [0xeb] }],
+						},
+						{
+							name: 'Shim Lightning Mode IO (for spicetools)',
+							patches: [
+								{ offset: 0x5fbcce, off: [0x0f, 0x84, 0x8d, 0x00, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] },
+								{ offset: 0x63b0e4, off: [0x0f, 0x84], on: [0x90, 0xe9] },
+								{ offset: 0x63b850, off: [0x7c, 0xe5], on: [0x0c, 0xde] },
+							],
+						},
+						{
+							name: 'Hide "EXTRA PASELI: %d"',
+							patches: [
+								{
+									offset: 0x2bd1b1,
+									off: [0x7f, 0x12, 0x44, 0x8b, 0xcb, 0x4c, 0x8d, 0x05, 0xf3, 0xd8, 0x4e, 0x00],
+									on: [0x90, 0xe9, 0x22, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90],
+								},
+							],
+						},
+						{
+							name: 'Hide "INSERT COIN[S]"',
+							patches: [{ offset: 0x2bd56b, off: [0xe8, 0x50, 0xaa, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Hide "PASELI: *****"',
+							patches: [{ offset: 0x2bd3bb, off: [0xff, 0x15, 0x5f, 0x8e, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Hide "PASELI: NO ACCOUNT"',
+							patches: [{ offset: 0x2bd459, off: [0xff, 0x15, 0xc1, 0x8d, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Hide "PASELI: NOT AVAILABLE"',
+							patches: [{ offset: 0x2bd2b4, off: [0x48, 0x8d, 0x05, 0xdd, 0xd7, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Hide "CREDIT: %d"',
+							patches: [{ offset: 0x2bd0d6, off: [0xff, 0x15, 0x44, 0x91, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'SSE4.2 Fix',
+							tooltip: 'This will allow the game to run on processors which do not support the SSE4.2 instruction set. If you can successfully boot the game, do NOT check this.',
+							patches: [{ offset: 0x2677c4, off: [0xf3, 0x45, 0x0f], on: [0x90, 0x90, 0x90] }],
+						},
+						{
+							name: 'Always show FAST/SLOW total',
+							tooltip: "Toggles the 'FA/SL' judge text to show by default instead of requiring VEFX to be held.",
+							patches: [
+								{ offset: 0x5667f0, off: [0x74], on: [0x75] },
+								{ offset: 0x5665d3, off: [0x74], on: [0x75] },
+							],
+						},
+						{
+							name: 'CS-Style Song Start Delay',
+							tooltip: 'Holding Start will pause the song at the beginning until you release it',
+							patches: [{ offset: 0x575423, off: [0x7d, 0x4d], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Free play text to LED ticker (Bottom Right)',
+							tooltip: 'Song Title/Ticker information will display instead of FREEPLAY',
+							patches: [{ offset: 0x2bd26f, off: [0xe5, 0xd7, 0x4e, 0x00], on: [0x49, 0x7f, 0x50, 0x04] }],
+						},
+						{
+							name: 'Unscramble touch screen keypad in TDJ',
+							tooltip: 'Disable randomization of keypad layout when carding in',
+							patches: [{ offset: 0x614855, off: [0x4d, 0x03, 0xc8, 0x49, 0xf7, 0xf1], on: [0xba, 0x0c, 0x00, 0x00, 0x00, 0x90] }],
+						},
+						{
+							name: 'Always display EX score instead of money score',
+							patches: [{ offset: 0x5ca12e, off: [0x33, 0xc0], on: [0xeb, 0xf4] }],
+						},
+						{
+							name: 'Debug Mode',
+							tooltip: 'While in game, press F1 to enable menu.  (Disables Profile/Score saving)',
+							patches: [{ offset: 0x59a450, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
+						},
+						{
+							name: 'QC Mode',
+							tooltip: 'Hidden test menu. Press SW4 to navigate right/left',
+							patches: [
+								{ offset: 0x5e3171, off: [0x74, 0x4f], on: [0x90, 0x90] },
+								{ offset: 0x5e3199, off: [0x74], on: [0xeb] },
+							],
+						},
+						{
+							name: 'Increase "All Factory Settings" buffer',
+							tooltip: 'Enable this if the option below is not default',
+							patches: [
+								{ offset: 0x5c359e, off: [0x40, 0x01, 0x00, 0x00], on: [0x22, 0x61, 0x14, 0x00] },
+								{ offset: 0x78e62a, off: [0x40, 0x01, 0x00, 0x00], on: [0x22, 0x61, 0x14, 0x00] },
+							],
+						},
+						{
+							type: 'union',
+							name: 'Reroute "All Factory Settings" test menu',
+							offset: 0x5c35b5,
+							patches: [
+								{
+									name: 'TestAllFactorySettingsScene',
+									tooltip: 'Default',
+									patch: [0x17, 0x88, 0x01, 0x00],
+								},
+								{
+									name: 'AfpViewerScene',
+									patch: [0x57, 0x72, 0xd4, 0xff],
+								},
+								{
+									name: 'QproViewerScene',
+									patch: [0x07, 0x03, 0xd5, 0xff],
+								},
+								{
+									name: 'SoundViewerScene',
+									patch: [0x37, 0x69, 0xd5, 0xff],
+								},
+							],
+						},
+						{
+							type: 'union',
+							name: "Reroute 'I/O Check -> Camera Check -> 2D Code check' test menu",
+							offset: 0x5c3a55,
+							patches: [
+								{
+									name: 'TestIOCheckQrCheckScene',
+									tooltip: 'Default',
+									patch: [0xa7, 0x49, 0x01, 0x00],
+								},
+								{
+									name: 'CustomizeViewerScene',
+									patch: [0x87, 0x92, 0xd4, 0xff],
+								},
+								{
+									name: 'SoundRankingViewerScene',
+									patch: [0x47, 0x2b, 0xd5, 0xff],
+								},
+								{
+									name: 'SystemSoundViewerScene',
+									patch: [0x47, 0x9e, 0xd5, 0xff],
+								},
+							],
+						},
+						{
+							name: 'Disable News Sound',
+							tooltip: 'Disables the sound played when news banners appear.',
+							patches: [{ offset: 0x88d1c0, off: [0x10], on: [0x00] }],
 						},
 					],
-				},
-				{
-					name: 'Hide "INSERT COIN[S]"',
-					patches: [{ offset: 0x2bd56b, off: [0xe8, 0x50, 0xaa, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'Hide "PASELI: *****"',
-					patches: [{ offset: 0x2bd3bb, off: [0xff, 0x15, 0x5f, 0x8e, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'Hide "PASELI: NO ACCOUNT"',
-					patches: [{ offset: 0x2bd459, off: [0xff, 0x15, 0xc1, 0x8d, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'Hide "PASELI: NOT AVAILABLE"',
-					patches: [{ offset: 0x2bd2b4, off: [0x48, 0x8d, 0x05, 0xdd, 0xd7, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'Hide "CREDIT: %d"',
-					patches: [{ offset: 0x2bd0d6, off: [0xff, 0x15, 0x44, 0x91, 0x4e, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'SSE4.2 Fix',
-					tooltip: 'This will allow the game to run on processors which do not support the SSE4.2 instruction set. If you can successfully boot the game, do NOT check this.',
-					patches: [{ offset: 0x2677c4, off: [0xf3, 0x45, 0x0f], on: [0x90, 0x90, 0x90] }],
-				},
-				{
-					name: 'Always show FAST/SLOW total',
-					tooltip: "Toggles the 'FA/SL' judge text to show by default instead of requiring VEFX to be held.",
-					patches: [
-						{ offset: 0x5667f0, off: [0x74], on: [0x75] },
-						{ offset: 0x5665d3, off: [0x74], on: [0x75] },
-					],
-				},
-				{
-					name: 'CS-Style Song Start Delay',
-					tooltip: 'Holding Start will pause the song at the beginning until you release it',
-					patches: [{ offset: 0x575423, off: [0x7d, 0x4d], on: [0x90, 0x90] }],
-				},
-				{
-					name: 'Free play text to LED ticker (Bottom Right)',
-					tooltip: 'Song Title/Ticker information will display instead of FREEPLAY',
-					patches: [{ offset: 0x2bd26f, off: [0xe5, 0xd7, 0x4e, 0x00], on: [0x49, 0x7f, 0x50, 0x04] }],
-				},
-				{
-					name: 'Unscramble touch screen keypad in TDJ',
-					tooltip: 'Disable randomization of keypad layout when carding in',
-					patches: [{ offset: 0x614855, off: [0x4d, 0x03, 0xc8, 0x49, 0xf7, 0xf1], on: [0xba, 0x0c, 0x00, 0x00, 0x00, 0x90] }],
-				},
-				{
-					name: 'Always display EX score instead of money score',
-					patches: [{ offset: 0x5ca12e, off: [0x33, 0xc0], on: [0xeb, 0xf4] }],
-				},
-				{
-					name: 'Debug Mode',
-					tooltip: 'While in game, press F1 to enable menu.  (Disables Profile/Score saving)',
-					patches: [{ offset: 0x59a450, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
-				},
-				{
-					name: 'QC Mode',
-					tooltip: 'Hidden test menu. Press SW4 to navigate right/left',
-					patches: [
-						{ offset: 0x5e3171, off: [0x74, 0x4f], on: [0x90, 0x90] },
-						{ offset: 0x5e3199, off: [0x74], on: [0xeb] },
-					],
-				},
-				{
-					name: 'Increase "All Factory Settings" buffer',
-					tooltip: 'Enable this if the option below is not default',
-					patches: [
-						{ offset: 0x5c359e, off: [0x40, 0x01, 0x00, 0x00], on: [0x22, 0x61, 0x14, 0x00] },
-						{ offset: 0x78e62a, off: [0x40, 0x01, 0x00, 0x00], on: [0x22, 0x61, 0x14, 0x00] },
-					],
-				},
-				{
-					type: 'union',
-					name: 'Reroute "All Factory Settings" test menu',
-					offset: 0x5c35b5,
-					patches: [
-						{
-							name: 'TestAllFactorySettingsScene',
-							tooltip: 'Default',
-							patch: [0x17, 0x88, 0x01, 0x00],
-						},
-						{
-							name: 'AfpViewerScene',
-							patch: [0x57, 0x72, 0xd4, 0xff],
-						},
-						{
-							name: 'QproViewerScene',
-							patch: [0x07, 0x03, 0xd5, 0xff],
-						},
-						{
-							name: 'SoundViewerScene',
-							patch: [0x37, 0x69, 0xd5, 0xff],
-						},
-					],
-				},
-				{
-					type: 'union',
-					name: "Reroute 'I/O Check -> Camera Check -> 2D Code check' test menu",
-					offset: 0x5c3a55,
-					patches: [
-						{
-							name: 'TestIOCheckQrCheckScene',
-							tooltip: 'Default',
-							patch: [0xa7, 0x49, 0x01, 0x00],
-						},
-						{
-							name: 'CustomizeViewerScene',
-							patch: [0x87, 0x92, 0xd4, 0xff],
-						},
-						{
-							name: 'SoundRankingViewerScene',
-							patch: [0x47, 0x2b, 0xd5, 0xff],
-						},
-						{
-							name: 'SystemSoundViewerScene',
-							patch: [0x47, 0x9e, 0xd5, 0xff],
-						},
-					],
-				},
-				{
-					name: 'Disable News Sound',
-					tooltip: 'Disables the sound played when news banners appear.',
-					patches: [{ offset: 0x88d1c0, off: [0x10], on: [0x00] }],
 				},
 			],
 		],
