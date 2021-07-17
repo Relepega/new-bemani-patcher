@@ -920,43 +920,43 @@ const popn = [
 					version: '2021-04-26', // app version
 					patches: [
 						{
-							name: 'E: Drive Fix',
-							tooltip: 'Fix crash caused by no E: drive',
-							patches: [{ offset: 0x28e910, off: [0x65, 0x3a, 0x2f], on: [0x64, 0x65, 0x76] }],
+							name: "E: Drive Fix",
+							tooltip: "Fix crash caused by no E: drive",
+							patches: [{ offset: 0x28E910, off: [0x65, 0x3A, 0x2F], on: [0x64, 0x65, 0x76] }],
 						},
 						{
-							name: 'HDMI Audio Fix',
-							patches: [{ offset: 0x13895c, off: [0x85, 0xc0, 0x75, 0x96], on: [0x90, 0x90, 0x90, 0x90] }],
+							name: "HDMI Audio Fix",
+							patches: [{ offset: 0x13895C, off: [0x85, 0xC0, 0x75, 0x96], on: [0x90, 0x90, 0x90, 0x90] }],
 						},
 						{
-							name: 'Prevent Windows volume change on boot',
-							tooltip: 'If your volume gets forced to max, turn this on',
-							patches: [{ offset: 0x13b560, off: [0x83], on: [0xc3] }],
+							name: "Prevent Windows volume change on boot",
+							tooltip: "If your volume gets forced to max, turn this on",
+							patches: [{ offset: 0x13B560, off: [0x83], on: [0xC3] }],
 						},
 						{
-							name: 'Boot to Event Mode',
-							patches: [{ offset: 0x10cc50, off: [0x8b, 0x00, 0xc3, 0xcc], on: [0x31, 0xc0, 0x40, 0xc3] }],
+							name: "Boot to Event Mode",
+							patches: [{ offset: 0x10CC50, off: [0x8B, 0x00, 0xC3, 0xCC], on: [0x31, 0xC0, 0x40, 0xC3] }],
 						},
 						{
-							name: 'Remove Timer',
-							patches: [{ offset: 0xe543c, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
+							name: "Remove Timer",
+							patches: [{ offset: 0xE543C, off: [0x0F, 0x85], on: [0x90, 0xE9] }],
 						},
 						{
-							name: 'Skip Menu and Long Note Tutorials',
+							name: "Skip Menu and Long Note Tutorials",
 							patches: [
-								{ offset: 0x289cb, off: [0x74], on: [0xeb] },
-								{ offset: 0x289a7, off: [0x75], on: [0xeb] },
-								{ offset: 0x8dc61, off: [0x75], on: [0xeb] },
+								{ offset: 0x289CB, off: [0x74], on: [0xEB] },
+								{ offset: 0x289A7, off: [0x75], on: [0xEB] },
+								{ offset: 0x8DC61, off: [0x75], on: [0xEB] },
 							],
 						},
 						{
-							name: 'Unlock All Songs',
+							name: "Unlock All Songs",
 							patches: [
-								{ offset: 0x111192, off: [0x74], on: [0xeb] },
-								{ offset: 0x1111ab, off: [0x74], on: [0xeb] },
-								{ offset: 0x1111c8, off: [0x75], on: [0xeb] },
-								{ offset: 0x1111f5, off: [0x84, 0xc0], on: [0xb0, 0x01] },
-							],
+								{ offset: 0x111192, off: [0x74], on: [0xEB] },
+								{ offset: 0x1111AB, off: [0x74], on: [0xEB] },
+								{ offset: 0x1111C8, off: [0x75], on: [0xEB] },
+								{ offset: 0x1111F5, off: [0x84, 0xC0], on: [0xB0, 0x01] },
+							]
 						},
 						// {
 						// 	name: '',
