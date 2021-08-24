@@ -964,6 +964,112 @@ const ddr = [
 			],
 		],
 	},
+	{
+		id: 'ddra20plus',
+		name: 'Dance Dance Revolution A20 Plus',
+		image: 'ddra20.png',
+		patchers: [
+			[
+				{
+					appname: 'gamemdx.dll',
+					version: '2020-07-27',
+					patches: [
+						{
+							name: 'Force enable fast/slow',
+							patches: [{ offset: 0xa5590, off: [0x8b, 0x41, 0x44], on: [0x31, 0xc0, 0x40] }],
+						},
+						{
+							name: 'Force background judgement',
+							patches: [{ offset: 0xa5580, off: [0x8b, 0x41], on: [0x31, 0xc0] }],
+						},
+						{
+							name: 'Force darkest background',
+							patches: [{ offset: 0xa631e, off: [0x75, 0x03, 0x33, 0xc0], on: [0x33, 0xc0, 0xb0, 0x03] }],
+						},
+						{
+							name: 'Song Unlock',
+							patches: [
+								{ offset: 0x99646, off: [0x75, 0x08, 0x5e, 0x32, 0xc0], on: [0x90, 0x90, 0x5e, 0xb0, 0x01] },
+								{ offset: 0x9ad10, off: [0x0f, 0x8c], on: [0x90, 0xe9] },
+								{ offset: 0x1d4cfc, off: [0x65], on: [0x62] },
+								{ offset: 0x1d4d10, off: [0x72], on: [0x62] },
+								{ offset: 0x1d4d18, off: [0x6c], on: [0x62] },
+								{ offset: 0x1d4d24, off: [0x6c], on: [0x62] },
+							],
+						},
+						{
+							name: 'Tutorial Skip',
+							patches: [{ offset: 0x4e003, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Timer Freeze',
+							patches: [{ offset: 0x292f5, off: [0x74], on: [0xeb] }],
+						},
+						{
+							name: 'Unlock options',
+							tooltip: 'Unlocks e-amusement exclusive options such as ARROW COLOR',
+							patches: [{ offset: 0x8e8b3, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Enable DDR SELECTION',
+							tooltip: 'Even works in offline/local mode!',
+							patches: [{ offset: 0x88e09, off: [0xe8, 0x52, 0xb3, 0x01], on: [0xb8, 0x01, 0x00, 0x00] }],
+						},
+						{
+							name: 'Premium Free',
+							patches: [{ offset: 0x1fd71, off: [0x01], on: [0x00] }],
+						},
+						{
+							name: 'Mute announcer',
+							tooltip: 'Also mutes crowd cheering and booing during gameplay',
+							patches: [
+								{ offset: 0x2c448, off: [0x0f, 0x84], on: [0x90, 0xe9] },
+								{ offset: 0x1c74e3, off: [0x76], on: [0x62] },
+								{ offset: 0x1c74ff, off: [0x76], on: [0x62] },
+							],
+						},
+						{
+							name: 'Force DDR SELECTION theme everywhere',
+							tooltip: 'Skips intro and enables the skin selected below on all songs',
+							patches: [
+								{ offset: 0x28061, off: [0x0f, 0x84], on: [0x90, 0xe9] },
+								{ offset: 0xa3ccd, off: [0x75, 0x49], on: [0x90, 0x90] },
+								{ offset: 0xa3cda, off: [0x77, 0x3c], on: [0x90, 0x90] },
+								{ offset: 0xa3cdc, off: [0xff, 0x24], on: [0xeb, 0x11] },
+							],
+						},
+						{
+							type: 'union',
+							name: 'Choose forced theme',
+							offset: 0xa3ce4,
+							patches: [
+								{
+									name: '1st',
+									patch: [0x01],
+								},
+								{
+									name: 'EXTREME',
+									patch: [0x02],
+								},
+								{
+									name: 'SuperNOVA2',
+									patch: [0x03],
+								},
+								{
+									name: 'X2',
+									patch: [0x04],
+								},
+								{
+									name: '2013',
+									patch: [0x05],
+								},
+							],
+						},
+					],
+				},
+			],
+		],
+	},
 ]
 
 export default ddr
