@@ -1779,7 +1779,7 @@ const sdvx = [
 				{
 					// object containing Patcher data
 					appname: 'soundvoltex.dll', // app entryfile
-					version: '2021-06-16', // app version
+					version: '2021-06-08', // app version
 					patches: [
 						{
 							name: 'Disable power change', //patch by Xyen
