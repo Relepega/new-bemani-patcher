@@ -1806,6 +1806,14 @@ const sdvx = [
 							patches: [{ offset: 0x42ec39, off: [0x04], on: [0x00] }],
 						},
 						{
+							name: 'Allow non E004 cards',
+							tooltip: 'Allows cards that do not have E004 card IDs (such as mifare cards) to work.',
+							patches: [
+								{ offset: 0xa4b, off: [0x75, 0x12], on: [0x90, 0x90] },
+								{ offset: 0xa53, off: [0x74], on: [0xeb] },
+							],
+						},
+						{
 							name: 'Timer freeze', // ikaros14
 							patches: [{ offset: 0x71406, off: [0x84], on: [0x85] }],
 						},
