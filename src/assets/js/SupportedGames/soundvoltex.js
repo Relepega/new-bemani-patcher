@@ -1842,6 +1842,72 @@ const sdvx = [
 						},
 					],
 				},
+				{
+					// object containing Patcher data
+					appname: 'soundvoltex.dll', // app entryfile
+					version: '2021-08-31', // app version
+					patches: [
+						{
+							name: 'Disable power change', //patch by Xyen
+							tooltip: 'Prevents power mode change on startup',
+							patches: [{ offset: 0x1ee543, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Disable monitor change', //patch by Xyen
+							tooltip: 'Prevents monitor setting changes on startup',
+							patches: [{ offset: 0x1ee5db, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Valkyrie Model Support',
+							tooltip: 'Will only work with <spec __type="str">F</spec> changed to either G or H, in ea3-config.xml.',
+							patches: [{ offset: 0x3f8d25, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+						},
+						{
+							name: '120Hz Support',
+							patches: [{ offset: 0x7085ee, off: [0x4e], on: [0x5e] }],
+						},
+						{
+							name: 'Shared mode WASAPI',
+							tooltip: "Only replaces the first audio device init attempt. Set output to 44100Hz 16bit if it doesn't work.",
+							patches: [{ offset: 0x4343d9, off: [0x04], on: [0x00] }],
+						},
+						{
+							name: 'Timer freeze', // ikaros14
+							patches: [{ offset: 0x71426, off: [0x84], on: [0x85] }],
+						},
+						{
+							name: 'Premium timer freeze',
+							patches: [
+								{ offset: 0x2f9578, off: [0x0f, 0x85], on: [0x90, 0xe9] }, //during music select
+								{ offset: 0x27fbb9, off: [0x0f, 0x84], on: [0x90, 0xe9] }, //during song
+								{ offset: 0x1ceb2e, off: [0x75], on: [0xeb] }, //during result screen
+							],
+						},
+						{
+							type: 'union',
+							name: 'Premium Time Length',
+							offset: 0x29f116,
+							patches: [
+								{
+									name: 'Default (10 Minutes)',
+									patch: [0x00, 0x70, 0xc9, 0xb2, 0x8b, 0x00, 0x00, 0x00],
+								},
+								{
+									name: '20 Minutes',
+									patch: [0x00, 0xe0, 0x92, 0x65, 0x17, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '30 Minutes',
+									patch: [0x00, 0x50, 0x5c, 0x18, 0xa3, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '1 Hour',
+									patch: [0x00, 0xa0, 0xb8, 0x30, 0x46, 0x03, 0x00, 0x00],
+								},
+							],
+						},
+					],
+				},
 			],
 		],
 	},
