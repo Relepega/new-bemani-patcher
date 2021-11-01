@@ -1908,6 +1908,83 @@ const sdvx = [
 						},
 					],
 				},
+				{
+					appname: 'soundvoltex.dll', // app entryfile
+					version: '2021-10-20', // app version
+					patches: [
+						{
+							name: 'Disable power change', //patch by Xyen
+							tooltip: 'Prevents power mode change on startup',
+							patches: [{ offset: 0x1efa13, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Disable monitor change', //patch by Xyen
+							tooltip: 'Prevents monitor setting changes on startup',
+							patches: [{ offset: 0x1efaab, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: 'Force BIO2 (KFC) IO in Valkyrie mode',
+							tooltip: 'Will only work with <spec __type="str">F</spec> changed to either G or H, in ea3-config.xml.',
+							patches: [{ offset: 0x3fa835, off: [0x87, 0x05], on: [0x47, 0x0c] }],
+						},
+						{
+							name: '120Hz Support',
+							patches: [{ offset: 0x70c4e6, off: [0x4e], on: [0x5e] }],
+						},
+						{
+							name: 'Shared mode WASAPI',
+							tooltip: "Only replaces the first audio device init attempt. Set output to 44100Hz 16bit if it doesn't work.",
+							patches: [{ offset: 0x435f39, off: [0x04], on: [0x00] }],
+						},
+						{
+							name: 'Shared mode WASAPI Valkyrie',
+							patches: [{ offset: 0x435e97, off: [0x07], on: [0x00] }],
+						},
+						{
+							name: 'Allow non E004 cards',
+							tooltip: 'Allows cards that do not have E004 card IDs (such as mifare cards) to work.',
+							patches: [
+								{ offset: 0xa4b, off: [0x75, 0x12], on: [0x90, 0x90] },
+								{ offset: 0xa53, off: [0x74], on: [0xeb] },
+							],
+						},
+						{
+							name: 'Timer freeze', // ikaros14
+							patches: [{ offset: 0x71426, off: [0x84], on: [0x85] }],
+						},
+						{
+							name: 'Premium timer freeze',
+							patches: [
+								{ offset: 0x2facb8, off: [0x0f, 0x85], on: [0x90, 0xe9] }, //during music select
+								{ offset: 0x281239, off: [0x0f, 0x84], on: [0x90, 0xe9] }, //during song
+								{ offset: 0x1cf2be, off: [0x75], on: [0xeb] }, //during result screen
+							],
+						},
+						{
+							type: 'union',
+							name: 'Premium Time Length',
+							offset: 0x2a07c6,
+							patches: [
+								{
+									name: 'Default (10 Minutes)',
+									patch: [0x00, 0x70, 0xc9, 0xb2, 0x8b, 0x00, 0x00, 0x00],
+								},
+								{
+									name: '20 Minutes',
+									patch: [0x00, 0xe0, 0x92, 0x65, 0x17, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '30 Minutes',
+									patch: [0x00, 0x50, 0x5c, 0x18, 0xa3, 0x01, 0x00, 0x00],
+								},
+								{
+									name: '1 Hour',
+									patch: [0x00, 0xa0, 0xb8, 0x30, 0x46, 0x03, 0x00, 0x00],
+								},
+							],
+						},
+					],
+				},
 			],
 		],
 	},
