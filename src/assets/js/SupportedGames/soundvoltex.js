@@ -1983,6 +1983,10 @@ const sdvx = [
 								},
 							],
 						},
+						{
+							name: 'Uncensor album jackets (for K region only)',
+							patches: [{ offset: 0x695e01, off: [0x61], on: [0x75] }],
+						},
 					],
 				},
 			],
