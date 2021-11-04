@@ -1774,6 +1774,191 @@ const bm2dx = [
 						},
 					],
 				},
+				{
+					// object containing Patcher data
+					appname: 'bm2dx.dll', // app entryfile
+					version: '2021-09-15', // app version
+					patches: [
+						{
+							name: 'Bypass lightning monitor error',
+							patches: [{ offset: 0x7464a1, off: [0x0f, 0x85], on: [0x90, 0xe9] }],
+						},
+						{
+							name: 'Shim Lightning Mode IO (for spicetools)',
+							patches: [
+								{ offset: 0x86efd4, off: [0x0f, 0x84], on: [0x90, 0xe9] },
+								{ offset: 0x86f740, off: [0x9c, 0xe4], on: [0x3c, 0xdd] },
+							],
+						},
+						{
+							name: 'Lightning Mode camera crash fix (for spicetools)',
+							patches: [
+								{
+									offset: 0x7bbf2e,
+									off: [0x0f, 0x84, 0x8d, 0x00, 0x00, 0x00],
+									on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90],
+								},
+							],
+						},
+						{
+							name: 'Force LDJ software video decoder for all boot modes',
+							patches: [
+								{
+									offset: 0x7bbf27,
+									off: [0x83, 0x78, 0x08, 0x02],
+									on: [0x83, 0x78, 0x08, 0x05],
+								},
+							],
+						},
+						{
+							name: 'Force 120hz timing and adapter mode in LDJ (Experimental)',
+							patches: [
+								{ offset: 0x45f163, off: [0x75], on: [0xeb] },
+								{ offset: 0x854a2e, off: [0x3c], on: [0x78] },
+								{ offset: 0x854c19, off: [0x74, 0x03], on: [0x90, 0x90] },
+							],
+						},
+						{
+							name: 'WASAPI Shared Mode (with 44100Hz)',
+							patches: [{ offset: 0x28c9a1, off: [0x01], on: [0x00] }],
+						},
+						{
+							name: 'Unscramble touch screen keypad in TDJ',
+							patches: [
+								{
+									offset: 0x7fb125,
+									off: [0x4d, 0x03, 0xc8, 0x49, 0xf7, 0xf1],
+									on: [0xba, 0x0c, 0x00, 0x00, 0x00, 0x90],
+								},
+							],
+						},
+						{
+							name: 'Skip CAMERA DEVICE ERROR prompt',
+							tooltip: 'Prevents the CAMERA DEVICE ERROR message from popping up on boot',
+							patches: [{ offset: 0x75378b, off: [0x84], on: [0x81] }],
+						},
+						{
+							name: '1P Premium Free',
+							tooltip: 'Forcibly enables Premium Free option for 1P',
+							patches: [{ offset: 0x6fad09, off: [0x75], on: [0xeb] }],
+						},
+						{
+							name: '2P Premium Free',
+							tooltip: 'Forcibly enables Premium Free option for 2P',
+							patches: [
+								{ offset: 0x6faf0a, off: [0x74, 0x6c], on: [0x90, 0x90] },
+								{ offset: 0x6faf20, off: [0x74, 0x56], on: [0x90, 0x90] },
+							],
+						},
+						{
+							name: '2P force ARENA',
+							tooltip: 'Allows selecting Arena option on 2P side',
+							patches: [{ offset: 0x6faf35, off: [0x75, 0x41], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Force BPL BATTLE',
+							tooltip: 'Forcibly enables BPL BATTLE option',
+							patches: [{ offset: 0x6faf5a, off: [0x74, 0x1c], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Skip Decide Screen',
+							patches: [
+								{
+									offset: 0x3cd7c0,
+									off: [0xe8, 0x6b, 0x00, 0x00, 0x00],
+									on: [0x90, 0x90, 0x90, 0x90, 0x90],
+								},
+							],
+						},
+						{
+							name: 'CS-style song start delay',
+							tooltip: 'Holding Start will pause the song at the beginning until you release it',
+							patches: [
+								{
+									offset: 0x72df33,
+									off: [0x7d, 0x4d],
+									on: [0x90, 0x90],
+								},
+							],
+						},
+						{
+							name: 'Cursor Lock',
+							patches: [{ offset: 0x7026ef, off: [0x74, 0x1f], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Quick Retry',
+							patches: [{ offset: 0x4a859f, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
+						},
+						{
+							name: 'Always show FAST/SLOW total',
+							patches: [
+								{ offset: 0x7186c3, off: [0x74], on: [0x75] },
+								{ offset: 0x7188e0, off: [0x74], on: [0x75] },
+							],
+						},
+						{
+							name: 'Force max V-Discs',
+							tooltip: 'Allows for infinite Leggendaria plays in Premium Free',
+							patches: [
+								{
+									offset: 0x4b20f9,
+									off: [0x44, 0x89, 0x4c, 0x81, 0x08, 0xc3, 0xcc, 0x48, 0x89, 0x5c, 0x24, 0x08],
+									on: [0xc7, 0x44, 0x81, 0x08, 0x10, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90],
+								},
+							],
+						},
+						{
+							name: 'Hide time limit display on results screen',
+							patches: [{ offset: 0x73576f, off: [0x84, 0xc0], on: [0x90, 0x90] }],
+						},
+						{
+							name: 'Premium Free Timer Freeze',
+							tooltip: 'Freezes the timer in PREMIUM FREE mode, allowing unlimited play until exit',
+							patches: [{ offset: 0x4cbbf3, off: [0x74], on: [0xeb] }],
+						},
+						{
+							name: 'Unlock All Songs',
+							patches: [{ offset: 0x4c647a, off: [0x32, 0xc0], on: [0xb0, 0x01] }],
+						},
+						{
+							name: 'Standard/Menu Timer Freeze',
+							patches: [{ offset: 0x77a5b7, off: [0x74], on: [0xeb] }],
+						},
+						{
+							name: 'Hide bottom text',
+							tooltip: 'Hides the CREDIT, INSERT COINS, NO ACCOUNT, NOT AVAILABLE, and EXTRA PASELI messages',
+							patches: [
+								{ offset: 0x3b2591, off: [0x7f, 0x12, 0x44, 0x8b, 0xcb, 0x4c, 0x8d, 0x05, 0xeb, 0xb1, 0x6c, 0x00], on: [0x90, 0xe9, 0x22, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }, //EXTRA PASELI: %d
+								{ offset: 0x3b294d, off: [0xe8, 0x5e, 0xb1, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90] }, //INSERT COIN[S]
+								{ offset: 0x3b2839, off: [0xff, 0x15, 0xa9, 0x3b, 0x6c, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }, //PASELI: NO ACCOUNT
+								{ offset: 0x3b26b4, off: [0x48, 0x8d, 0x05, 0xfd, 0x1a, 0x90, 0x04], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }, //PASELI: NOT AVAILABLE
+								{ offset: 0x3b24b6, off: [0xff, 0x15, 0x2c, 0x3f, 0x6c, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }, //CREDIT: %d
+							],
+						},
+						{
+							name: 'Also hide "PASELI: ******" message',
+							tooltip: 'Disable if using PASELI display to LED ticker patch',
+							patches: [
+								{ offset: 0x3b279b, off: [0xff, 0x15, 0x47, 0x3c, 0x6c, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }, //PASELI: ******
+							],
+						},
+						{
+							name: 'Redirect LED ticker to FREE PLAY',
+							tooltip: 'Displays LED ticker messages on bottom right when FREE PLAY is enabled',
+							patches: [
+								{ offset: 0x3b264f, off: [0xdd, 0xb0, 0x6c, 0x00], on: [0x99, 0x83, 0x19, 0x05] }, //PASELI: ******
+							],
+						},
+						{
+							name: 'Redirect LED ticker to PASELI display',
+							tooltip: 'Displays LED ticker messages on bottom left when PASELI messages are present',
+							patches: [
+								{ offset: 0x3b2768, off: [0x4c, 0xb0, 0x6c, 0x00], on: [0x80, 0x82, 0x19, 0x05] }, //PASELI: %d
+								{ offset: 0x3b278d, off: [0x47, 0xb0, 0x6c, 0x00], on: [0x5b, 0x82, 0x19, 0x05] }, //PASELI: ******
+							],
+						},
+					],
+				},
 			],
 			//[], // array for PatchContainer						// and so on...
 		],
